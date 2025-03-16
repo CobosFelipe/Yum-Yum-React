@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import logo from "../assets/logo-yum-yum.png";
 
-function Navbar() {
+const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -9,7 +9,7 @@ function Navbar() {
   };
 
   return (
-    <nav className="relative bg-white shadow ">
+    <nav className="fixed top-0 bg-white shadow w-full absolute z-2">
       <div className="px-4 py-2 mx-auto">
         <div className="lg:flex lg:items-center lg:justify-between">
           <div className="flex items-center justify-between">

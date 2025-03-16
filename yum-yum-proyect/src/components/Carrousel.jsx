@@ -21,7 +21,7 @@ function Carousel({ images }) {
   }, []);
 
   return (
-    <div id="default-carousel" className="relative w-full">
+    <div id="default-carousel" className="relative w-full mt-11">
       {/* Carousel wrapper */}
       <div className="relative overflow-hidden rounded-lg md:h-65">
         {images.map((image, index) => (
