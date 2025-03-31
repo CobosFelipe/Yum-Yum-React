@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
+import styles from '../../styles/carrousel.module.css'
 
-function Carousel({ images }) { 
+function Carousel({ images }) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const nextSlide = () => {
@@ -16,21 +17,27 @@ function Carousel({ images }) {
   };
 
   useEffect(() => {
-    const interval = setInterval(nextSlide, 5000); // Cambia de slide cada 5 segundos
+    const interval = setInterval(nextSlide, 5000);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div id="default-carousel" className="relative w-full mt-11">
+    <div id="default-carousel" className={`relative w-full ${styles.carrousel}`}>
       {/* Carousel wrapper */}
-      <div className="relative overflow-hidden rounded-lg md:h-65">
+      <div className={`relative overflow-hidden rounded-lg ${styles.carrousel}`}>
         {images.map((image, index) => (
           <div
             key={index}
-            className={`duration-700 ease-in-out absolute w-full transition-opacity ${index === currentIndex ? "opacity-100" : "opacity-0"}`}
+            className={`duration-700 ease-in-out absolute w-full transition-opacity ${
+              index === currentIndex ? 'opacity-100' : 'opacity-0'
+            } ${styles.carrousel}`}
             data-carousel-item
           >
-            <img src={image} className="block w-full" alt={`Slide ${index + 1}`} />
+            <img
+              src={image}
+              className="block w-full object-contain"
+              alt={`Slide ${index + 1}`}
+            />
           </div>
         ))}
       </div>
@@ -40,7 +47,9 @@ function Carousel({ images }) {
           <button
             key={index}
             type="button"
-            className={`w-3 h-3 rounded-full ${index === currentIndex ? "bg-white" : "bg-gray-300"}`}
+            className={`w-3 h-3 rounded-full ${
+              index === currentIndex ? 'bg-white' : 'bg-gray-300'
+            }`}
             aria-current={index === currentIndex}
             aria-label={`Slide ${index + 1}`}
             onClick={() => goToSlide(index)}
@@ -61,7 +70,13 @@ function Carousel({ images }) {
             fill="none"
             viewBox="0 0 6 10"
           >
-            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 1 1 5l4 4" />
+            <path
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M5 1 1 5l4 4"
+            />
           </svg>
           <span className="sr-only">Previous</span>
         </span>
@@ -79,7 +94,13 @@ function Carousel({ images }) {
             fill="none"
             viewBox="0 0 6 10"
           >
-            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 9 4-4-4-4" />
+            <path
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="m1 9 4-4-4-4"
+            />
           </svg>
           <span className="sr-only">Next</span>
         </span>

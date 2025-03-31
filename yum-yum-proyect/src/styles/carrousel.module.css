@@ -1,0 +1,41 @@
+.carrousel {
+    width: 100%;
+    aspect-ratio: 2760 / 820;
+    min-height: 100px; 
+  }
+  
+  @media (min-width: 426px) {
+    .carrousel {
+      min-height: 130px;
+    }
+  }
+  
+  @media (min-width: 591px) {
+    .carrousel {
+      min-height: 175px;
+    }
+  }
+  
+  @media (min-width: 769px) {
+    .carrousel {
+      min-height: 220px;
+    }
+  }
+
+  @media (min-width: 897px) {
+    .carrousel {
+      min-height: 265px;
+    }
+  }
+  
+  @media (min-width: 1025px) {
+    .carrousel {
+      min-height: 305px;
+    }
+  }
+  
+  @media (min-width: 1441px) {
+    .carrousel {
+      min-height: 520px;
+    }
+  }
