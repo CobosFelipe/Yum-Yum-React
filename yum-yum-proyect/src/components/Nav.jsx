@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Router, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import logo from "../assets/logo-yum-yum.png";
 
 const Navbar = () => {
@@ -11,7 +11,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="fixed top-0 bg-white shadow w-full absolute z-2">
+      <nav className="fixed top-0 bg-white shadow w-full z-2">
         <div className="px-4 py-2 mx-auto">
           <div className="lg:flex lg:items-center lg:justify-between">
             <div className="flex items-center justify-between">
@@ -49,7 +49,7 @@ const Navbar = () => {
               }`}
             >
               <div className="flex flex-col -mx-6 lg:flex-row lg:items-center lg:mx-4">
-                <Link to="/Productos">
+                <Link to="/Productos/Todo">
                   <div className="px-1 py-0.5 mx-auto text-gray-500 font-normal transition-colors duration-300 transform rounded-md lg:mt-0 hover:text-pink-400 cursor-pointer hover:shadow-lg">
                     Productos
                   </div>
@@ -119,7 +119,7 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
-      <div className="mb-10 h-11 w-full"></div>
+      <div className="h-10 w-full"></div>
     </>
   );
 };
