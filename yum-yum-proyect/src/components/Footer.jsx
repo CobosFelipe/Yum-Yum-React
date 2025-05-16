@@ -1,7 +1,8 @@
-import React, { useState } from "react";
 import logo from "../assets/logo-yum-yum.png";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
+
   return (
     <>
       <footer className="bg-white">
@@ -12,43 +13,35 @@ const Footer = () => {
             </button>
 
             <div className="flex flex-wrap justify-center mt-6 -mx-4">
-              <a
-                href="#"
-                className="mx-4 text-md text-gray-500 font-normal cursor-pointer transition-colors duration-300 hover:text-pink-400"
-                aria-label="Reddit"
-              >
-                Inicio
-              </a>
+              <Link to="/">
+                <div className="mx-4 text-md text-gray-500 font-normal cursor-pointer transition-colors duration-300 hover:text-pink-400">
+                  Inicio
+                </div>
+              </Link>
 
-              <a
-                href="#"
+              <Link to="/Productos/Todo"
                 className="mx-4 text-md text-gray-500 font-normal cursor-pointer transition-colors duration-300 hover:text-pink-400"
-                aria-label="Reddit"
               >
                 Productos
-              </a>
+              </Link>
 
-              <a
-                href="#"
+              <Link to="/Nosotros"
                 className="mx-4 text-md text-gray-500 font-normal cursor-pointer transition-colors duration-300 hover:text-pink-400"
-                aria-label="Reddit"
               >
                 Nosotros
-              </a>
+              </Link>
 
-              <a
-                href="#"
+              <Link to="/Contacto"
                 className="mx-4 text-md text-gray-500 font-normal cursor-pointer  transition-colors duration-300 hover:text-pink-400"
-                aria-label="Reddit"
               >
                 Contacto
-              </a>
+              </Link>
             </div>
           </div>
 
           <hr className="my-2 border-gray-200 md:my-5 dark:border-gray-700" />
 
-          <div className="flex flex-col items-center flex-col sm:justify-between gap-4">
+          <div className="flex flex-col items-center sm:justify-between gap-4">
             <div className="flex flex-row gap-2 sx:flex-col text-center">
               <p className="text-md text-gray-500 font-normal">© Copyright 2024. All Rights Reserved.</p>
               <p className="text-md text-gray-500 font-normal">Dev with ❤ by Sense8.</p>
@@ -58,7 +51,7 @@ const Footer = () => {
               {/* Icono WhatsApp */}
               <a
                 href="https://api.whatsapp.com/message/6M4LB3XJPB7EB1?autoload=1&amp;app_absent=0"
-                className="mx-2 text-gray-500 font-normal cursor-pointer  transition-colors duration-300 hover:text-pink-400 hover:scale-115 duration-700 ease-in-out"
+                className="mx-2 text-gray-500 font-normal cursor-pointer  transition-colors hover:text-pink-400 hover:scale-115 duration-700 ease-in-out"
                 aria-label="WhatsApp"
                 target="_blank"
               >
@@ -90,7 +83,7 @@ const Footer = () => {
               {/* Icono Tik Tok */}
               <a
                 href="https://www.tiktok.com/@yum.bylorennivia"
-                className="mx-2 text-gray-500 font-normal cursor-pointer  transition-colors duration-300 hover:text-pink-400 hover:scale-115 duration-700 ease-in-out"
+                className="mx-2 text-gray-500 font-normal cursor-pointer  transition-colors hover:text-pink-400 hover:scale-115 duration-700 ease-in-out"
                 aria-label="Instagram"
                 target="_blank"
               >
@@ -124,7 +117,7 @@ const Footer = () => {
                 {/* Icono Instagram */}
               <a
                 href="https://www.instagram.com/yum.bylorennivia/"
-                className="mx-2 text-gray-500 font-normal cursor-pointer  transition-colors duration-300 hover:text-pink-400 hover:scale-115 duration-700 ease-in-out"
+                className="mx-2 text-gray-500 font-normal cursor-pointer  transition-colors hover:text-pink-400 hover:scale-115 duration-700 ease-in-out"
                 aria-label="Instagram"
                 target="_blank"
               >
