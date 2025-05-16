@@ -48,28 +48,24 @@ const Navbar = () => {
                 isOpen ? "translate-x-0 opacity-100" : "opacity-0 -translate-x-full"
               }`}
             >
-              <div className="flex flex-col -mx-6 lg:flex-row lg:items-center lg:mx-4">
-                <Link to="/Productos/Todo">
-                  <div className="px-1 py-0.5 mx-auto text-gray-500 font-normal transition-colors duration-300 transform rounded-md lg:mt-0 hover:text-pink-400 cursor-pointer hover:shadow-lg">
-                    Productos
-                  </div>
-                </Link>
-                <button
+              <div className="flex flex-col -mx-6 lg:flex-row lg:items-center lg:mx-4 gap-2">
+                <Link
+                  to="/Productos/Todo"
                   className="px-1 py-0.5 mx-auto text-gray-500 font-normal transition-colors duration-300 transform rounded-md lg:mt-0 hover:text-pink-400 cursor-pointer hover:shadow-lg"
-                  onClick={() => {
-                    alert("Funciona");
-                  }}
+                >
+                  Productos
+                </Link>
+                <Link
+                  to="/Nosotros"
+                  className="px-1 py-0.5 mx-auto text-gray-500 font-normal transition-colors duration-300 transform rounded-md lg:mt-0 hover:text-pink-400 cursor-pointer hover:shadow-lg"
                 >
                   Nosotros
-                </button>
-                <button
+                </Link>
+                <Link to="/Contacto"
                   className="px-1 py-0.5 mx-auto text-gray-500 font-normal transition-colors duration-300 transform rounded-md lg:mt-0 hover:text-pink-400 cursor-pointer hover:shadow-lg"
-                  onClick={() => {
-                    alert("Funciona");
-                  }}
                 >
                   Contacto
-                </button>
+                </Link>
               </div>
 
               <div className="flex flex-col items-center mt-2 lg:mt-0 justify-center gap-1 lg:flex-row">
@@ -94,7 +90,7 @@ const Navbar = () => {
                   </svg>
                 </button>
                 {/* Shopping bag button */}
-                <button
+                <Link to="/Carrito"
                   className="mx-1 text-gray-600 transition-colors duration-300 transform lg:block hover:text-pink-300 focus:text-pink-400 focus:outline-none hover:shadow-lg"
                   aria-label="show shopping bag"
                 >
@@ -113,7 +109,7 @@ const Navbar = () => {
                     <path d="M3 6h18" />
                     <path d="M16 10a4 4 0 0 1-8 0" />
                   </svg>
-                </button>
+                </Link>
               </div>
             </div>
           </div>
