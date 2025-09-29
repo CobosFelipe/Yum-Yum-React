@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import styles from '../../styles/carrousel.module.css'
 
 function Carousel({ images }) {
@@ -34,7 +34,7 @@ function Carousel({ images }) {
             data-carousel-item
           >
             <img
-              src={image}
+              src={image.link1}
               className="block w-full object-contain"
               alt={`Slide ${index + 1}`}
             />
