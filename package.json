@@ -10,13 +10,20 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@emotion/react": "^11.14.0",
-    "@emotion/styled": "^11.14.0",
+    "@formspree/react": "^3.0.0",
     "@mui/material": "^6.4.7",
+    "@tabler/icons-react": "^3.31.0",
     "@tailwindcss/vite": "^4.0.14",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "react-router-dom": "^7.3.0",
+    "clsx": "^2.1.1",
+    "framer-motion": "^11.18.2",
+    "motion": "^12.6.5",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-infinite-logo-slider": "^1.1.4",
+    "react-router": "^6.22.3",
+    "react-router-dom": "^6.22.3",
+    "react-toastify": "^11.0.5",
+    "tailwind-merge": "^3.2.0",
     "tailwindcss": "^4.0.14"
   },
   "devDependencies": {

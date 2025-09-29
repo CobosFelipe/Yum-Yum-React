@@ -70,7 +70,7 @@ const Navbar = () => {
 
               <div className="flex flex-col items-center mt-2 lg:mt-0 justify-center gap-1 lg:flex-row">
                 {/* User button */}
-                <button
+                <Link to="/Login"
                   className="mx-1 text-gray-600 transition-colors duration-300 transform lg:block hover:text-pink-300 focus:text-pink-400 focus:outline-none hover:shadow-lg"
                   aria-label="show user"
                 >
@@ -88,7 +88,7 @@ const Navbar = () => {
                     <circle cx="12" cy="8" r="5" />
                     <path d="M20 21a8 8 0 0 0-16 0" />
                   </svg>
-                </button>
+                </Link>
                 {/* Shopping bag button */}
                 <Link to="/Carrito"
                   className="mx-1 text-gray-600 transition-colors duration-300 transform lg:block hover:text-pink-300 focus:text-pink-400 focus:outline-none hover:shadow-lg"

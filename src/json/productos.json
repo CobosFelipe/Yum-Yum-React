@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "nombre": "Aretes de gatito",
+    "precio": 15250,
+    "descripcion": "Par de aretes de gatitos",
+    "imagen": "https://cdn1.totalcommerce.cloud/laplazamorada/product-image/es/aretes-de-gatito-yin-yang-2.webp"
+  },
+  {
+    "id": 2,
+    "nombre": "Anillos de ranita",
+    "precio": 15000,
+    "descripcion": "Anillos fluorecentes de ranita",
+    "imagen": "https://down-co.img.susercontent.com/file/743f6642180e2e8e4200a1b26717178e"
+  },
+  {
+    "id": 3,
+    "nombre": "Collar de cereza",
+    "precio": 18500,
+    "descripcion": "Collar de cadena con figura de cereza",
+    "imagen": "https://http2.mlstatic.com/D_NQ_NP_836207-MCO71498904222_092023-O.webp"
+  },
+  {
+    "id": 4,
+    "nombre": "Collar giratorio girasol",
+    "precio": 50000,
+    "descripcion": "Collar de cadena con figura de girasol giratorio",
+    "imagen": "https://http2.mlstatic.com/D_NQ_NP_904384-MCO78674783839_082024-O.webp"
+  },
+  {
+    "id": 5,
+    "nombre": "Aretes gota Chunky",
+    "precio": 20000,
+    "descripcion": "Aretes Gota Lágrima Mujer Chunky Moda Aretas Pendientes",
+    "imagen": "https://http2.mlstatic.com/D_NQ_NP_684890-MCO74370566756_022024-O.webp"
+  },
+  {
+    "id": 6,
+    "nombre": "Pin metalico",
+    "precio": 20000,
+    "descripcion": "Pines metalicos con diferentes modelos",
+    "imagen": "https://ugc.production.linktr.ee/fb29a4cc-d9f1-4456-9277-8477c2f638da_F5D56C37-A56F-4AEA-814D-CAA6AAB6C5F5.jpeg"
+  }
+]

@@ -8,7 +8,7 @@ const TotalesCarrito = () => {
   return (
     <div className="flex flex-col items-center justify-center cursor-pointer m-auto w-full mt-10">
       <div
-        className={`grid grid-cols-[2fr_1fr_1fr_1fr] gap-3 p-2 text-center xl:mx-64 lg:mx-32 md:mx-16 bg-gradient-to-r from-pink-200 to-blue-200 rounded-md`}
+        className={`grid grid-cols-[3fr_1fr_1fr_1fr] gap-3 p-2 text-center xl:mx-64 lg:mx-32 md:mx-16 bg-gradient-to-r from-pink-200 to-blue-200 rounded-md`}
       >
         {/* Encabezados */}
         <p className="font-bold">Nombre</p>

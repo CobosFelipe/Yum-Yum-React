@@ -2,6 +2,7 @@ import React from "react";
 
 import Carrousel from "../components/Inicio/Carrousel";
 import Categorias from "../components/Inicio/Categorias";
+
 //Importando imagenes del carrousel
 import banner1 from "../assets/imgs/Banner1.png";
 import banner2 from "../assets/imgs/Banner2.png";

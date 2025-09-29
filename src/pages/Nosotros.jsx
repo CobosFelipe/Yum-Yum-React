@@ -4,7 +4,7 @@ import profilePicture from "../assets/imgs/LorenaPicture.jpg";
 
 const Nosotros = () => {
   return (
-    <div className="min-h-[80vh] flex flex-col items-center justify-center">
+    <div className="min-h-[75vh] flex flex-col items-center justify-center">
       <div className="container m-auto my-2 text-center">
         <GradientText animationSpeed={3} showBorder={false} className="custom-class text-4xl">
           Nosotros
