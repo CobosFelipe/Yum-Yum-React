@@ -43,8 +43,8 @@ const Footer = () => {
 
           <div className="flex flex-col items-center sm:justify-between gap-4">
             <div className="flex flex-row gap-2 sx:flex-col text-center">
-              <p className="text-md text-gray-500 font-normal">© Copyright 2024. All Rights Reserved.</p>
-              <p className="text-md text-gray-500 font-normal">Dev with ❤ by Sense8.</p>
+              <p className="text-md text-gray-500 font-normal">© Copyright 2025. All Rights Reserved.</p>
+              <p className="text-md text-gray-500 font-normal">Dev by Felipe Cobos.</p>
             </div>
 
             <div className="flex -mx-2">
