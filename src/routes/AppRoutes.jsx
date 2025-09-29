@@ -4,12 +4,13 @@ import { Routes, Route, Navigate, BrowserRouter as Router } from "react-router-d
 import Inicio from "../pages/Inicio";
 import Navbar from "../components/Nav";
 import Productos from "../pages/Productos";
-import Nosotros from "../pages/Nosotros"
-import Contacto from "../pages/Contacto"
+import Nosotros from "../pages/Nosotros";
+import Contacto from "../pages/Contacto";
 import Carrito from "../pages/Carrito";
 import Factura from "../pages/Factura";
 import Login from "../pages/Login";
 import Footer from "../components/Footer";
+import ProductosCategoria from "../pages/ProductosCategoria";
 
 const AppRoutes = () => {
   return (
@@ -18,15 +19,16 @@ const AppRoutes = () => {
         <Navbar />
         <Routes>
           <Route path="/" element={<Inicio />} />
-          <Route path="/Productos/:categoria" element={<Productos />} />
+          <Route path="/Productos" element={<Productos />} />
+          <Route path="/Productos/:categoria" element={<ProductosCategoria />} />
           <Route path="/Nosotros" element={<Nosotros />} />
-          <Route path="/Contacto" element={<Contacto/>} />
+          <Route path="/Contacto" element={<Contacto />} />
           <Route path="/Carrito" element={<Carrito />} />
           <Route path="/Factura" element={<Factura />} />
           <Route path="/Login" element={<Login />} />
-          <Route path="/*" element={<Navigate to="/"/>} />
+          <Route path="/*" element={<Navigate to="/" />} />
         </Routes>
-        <Footer/>
+        <Footer />
       </Router>
     </>
   );
