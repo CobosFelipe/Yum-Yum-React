@@ -1,18 +1,44 @@
-import React from "react";
-
+import { useEffect, useState } from "react";
 import Carrousel from "../components/Inicio/Carrousel";
 import Categorias from "../components/Inicio/Categorias";
 
-//Importando imagenes del carrousel
-import banner1 from "../assets/imgs/Banner1.png";
-import banner2 from "../assets/imgs/Banner2.png";
-import banner3 from "../assets/imgs/Banner3.png";
+const API = import.meta.env.VITE_API_LINK;
 
 const Inicio = () => {
-  const imagenList = [banner1, banner2, banner3];
-  return (
+  const [imagenes, setImagenes] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchImagenes = async () => {
+      try {
+        const response = await fetch(`${API}/banner/list`);
+
+        if (!response.ok) {
+          throw new Error(`Error HTTP: ${response.status}`);
+        }
+
+        const result = await response.json();
+
+        if (result.code && result.code !== 200) {
+          throw new Error(`Error de negocio: ${result.message}`);
+        }
+
+        setImagenes(result.obj || []);
+      } catch (error) {
+        console.error("Error al obtener categorías:", error);
+        setImagenes([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchImagenes();
+  }, []);
+
+  return loading ? (
+    <></>
+  ) : (
     <>
-      <Carrousel images={imagenList} />
+      <Carrousel images={imagenes} />
       <Categorias />
     </>
   );
