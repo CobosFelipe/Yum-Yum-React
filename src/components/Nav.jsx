@@ -50,7 +50,7 @@ const Navbar = () => {
             >
               <div className="flex flex-col -mx-6 lg:flex-row lg:items-center lg:mx-4 gap-2">
                 <Link
-                  to="/Productos/Todo"
+                  to="/Productos"
                   className="px-1 py-0.5 mx-auto text-gray-500 font-normal transition-colors duration-300 transform rounded-md lg:mt-0 hover:text-pink-400 cursor-pointer hover:shadow-lg"
                 >
                   Productos
