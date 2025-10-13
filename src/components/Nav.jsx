@@ -1,25 +1,40 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
 import logo from "../assets/logo-yum-yum.png";
+import NavLinkItem from "../utils/NavLinkItem";
+import { UserRound, ShoppingBag, Menu, X, SlidersHorizontal, LogOut } from "lucide-react";
+import { useUsers } from "../hooks/useUsers";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { user, logout } = useUsers();
 
+  // Activador de modo desktop-mobile
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
+  // Manejo de logout
+  const handleLogout = () => {
+    logout();
+    // Opcional: Llamar a la API para limpiar la cookie de sesión si fuera necesario
+  };
+
+  // Clases de estilo para el menú
+  const menuClasses = `absolute inset-x-0 z-20 w-full px-6 py-4 transition-all duration-300 ease-in-out bg-white lg:mt-0 lg:p-0 lg:top-0 lg:relative lg:bg-transparent lg:w-auto lg:opacity-100 lg:translate-x-0 lg:flex lg:items-center min-w-xs lg:min-w-2xs ${
+    isOpen ? "translate-x-0 opacity-100" : "opacity-0 -translate-x-full"
+  }`;
+
   return (
     <>
-      <nav className="fixed top-0 bg-white shadow w-full z-2">
+      <nav className="fixed top-0 bg-white shadow w-full z-20">
         <div className="px-4 py-2 mx-auto">
           <div className="lg:flex lg:items-center lg:justify-between">
             <div className="flex items-center justify-between">
-              <Link to="/">
+              <NavLinkItem to="/">
                 <div className="w-auto h-6 sm:h-7">
                   <img src={logo} alt="logo-yum-yum" className="h-6 cursor-pointer hover:drop-shadow-[0px_2px_theme(colors.rose.300)]" />
                 </div>
-              </Link>
+              </NavLinkItem>
 
               {/* Mobile menu button */}
               <div className="flex lg:hidden">
@@ -29,88 +44,64 @@ const Navbar = () => {
                   className="text-gray-500 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none focus:text-gray-600 dark:focus:text-gray-400"
                   aria-label="toggle menu"
                 >
-                  {!isOpen ? (
-                    <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M4 8h16M4 16h16" />
-                    </svg>
-                  ) : (
-                    <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                  )}
+                  {!isOpen ? <Menu /> : <X />}
                 </button>
               </div>
             </div>
 
-            {/* Mobile Menu open: "block", Menu closed: "hidden" */}
-            <div
-              className={`absolute inset-x-0 z-20 w-full px-6 py-4 transition-all duration-300 ease-in-out bg-white lg:mt-0 lg:p-0 lg:top-0 lg:relative lg:bg-transparent lg:w-auto lg:opacity-100 lg:translate-x-0 lg:flex lg:items-center min-w-md lg:min-w-2xs ${
-                isOpen ? "translate-x-0 opacity-100" : "opacity-0 -translate-x-full"
-              }`}
-            >
-              <div className="flex flex-col -mx-6 lg:flex-row lg:items-center lg:mx-4 gap-2">
-                <Link
-                  to="/Productos"
-                  className="px-1 py-0.5 mx-auto text-gray-500 font-normal transition-colors duration-300 transform rounded-md lg:mt-0 hover:text-pink-400 cursor-pointer hover:shadow-lg"
-                >
-                  Productos
-                </Link>
-                <Link
-                  to="/Nosotros"
-                  className="px-1 py-0.5 mx-auto text-gray-500 font-normal transition-colors duration-300 transform rounded-md lg:mt-0 hover:text-pink-400 cursor-pointer hover:shadow-lg"
-                >
-                  Nosotros
-                </Link>
-                <Link to="/Contacto"
-                  className="px-1 py-0.5 mx-auto text-gray-500 font-normal transition-colors duration-300 transform rounded-md lg:mt-0 hover:text-pink-400 cursor-pointer hover:shadow-lg"
-                >
-                  Contacto
-                </Link>
-              </div>
+            {/* Bloque de Navegación Principal */}
+            <div className={menuClasses}>
+              {user?.isAdmin ? (
+                // --- NAVEGACIÓN ADMINISTRADOR ---
+                <div className="flex flex-col lg:flex-row lg:items-center gap-2">
+                  <NavLinkItem to="/Dashboard/Products">
+                    <span>Gestión Productos</span>
+                  </NavLinkItem>
+                  <NavLinkItem to="/Dashboard/Orders">
+                    <span>Órdenes</span>
+                  </NavLinkItem>
+                  <NavLinkItem to="/Dashboard/Users">
+                    <span>Usuarios</span>
+                  </NavLinkItem>
 
-              <div className="flex flex-col items-center mt-2 lg:mt-0 justify-center gap-1 lg:flex-row">
-                {/* User button */}
-                <Link to="/Login"
-                  className="mx-1 text-gray-600 transition-colors duration-300 transform lg:block hover:text-pink-300 focus:text-pink-400 focus:outline-none hover:shadow-lg"
-                  aria-label="show user"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <circle cx="12" cy="8" r="5" />
-                    <path d="M20 21a8 8 0 0 0-16 0" />
-                  </svg>
-                </Link>
-                {/* Shopping bag button */}
-                <Link to="/Carrito"
-                  className="mx-1 text-gray-600 transition-colors duration-300 transform lg:block hover:text-pink-300 focus:text-pink-400 focus:outline-none hover:shadow-lg"
-                  aria-label="show shopping bag"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
-                    <path d="M3 6h18" />
-                    <path d="M16 10a4 4 0 0 1-8 0" />
-                  </svg>
-                </Link>
-              </div>
+                  {/* Botón de Logout para el Admin */}
+                  <button onClick={handleLogout} className="text-gray-500 hover:text-red-500 transition-colors py-2 lg:py-0">
+                    <LogOut />
+                  </button>
+                </div>
+              ) : (
+                // --- NAVEGACIÓN PÚBLICA / CLIENTE ---
+                <div className="flex flex-col lg:flex-row lg:items-center gap-2">
+                  {/* Link a Productos */}
+                  <NavLinkItem to="/Productos">
+                    <span>Productos</span>
+                  </NavLinkItem>
+                  {/* Link a Nosotros */}
+                  <NavLinkItem to="/Nosotros">
+                    <span>Nosotros</span>
+                  </NavLinkItem>
+                  {/* Link a Contacto */}
+                  <NavLinkItem to="/Contacto">
+                    <span>Contacto</span>
+                  </NavLinkItem>
+
+                  {/* Botón de Carrito (si no es admin) */}
+                  <NavLinkItem to="/Carrito">
+                    <ShoppingBag />
+                  </NavLinkItem>
+
+                  {/* Botón de Usuario/Logout para el Cliente */}
+                  {user ? (
+                    <button onClick={handleLogout} className="text-gray-500 hover:text-red-500 transition-colors py-2 lg:py-0">
+                      <LogOut />
+                    </button>
+                  ) : (
+                    <NavLinkItem to="/Login">
+                      <UserRound />
+                    </NavLinkItem>
+                  )}
+                </div>
+              )}
             </div>
           </div>
         </div>
