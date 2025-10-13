@@ -1,17 +1,28 @@
 import "./App.css";
-import Navbar from "./components/Nav";
-import Footer from "./components/Footer";
 import AppRoutes from "./routes/AppRoutes";
 import { CartProvider } from "./context/ProductContext";
-import { ToastContainer } from 'react-toastify';
+import { UserProvider } from "./context/UserContext";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
-    <CartProvider>
-      {/* <Navbar /> */}
-      <AppRoutes/>
-      <ToastContainer />
-    </CartProvider>
+    <UserProvider>
+      <CartProvider>
+        <AppRoutes />
+        <ToastContainer
+          position="top-center"
+          autoClose={2000}
+          hideProgressBar={false}
+          newestOnTop={true}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
+      </CartProvider>
+    </UserProvider>
   );
 }
 
