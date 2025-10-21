@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import Carrousel from "../components/Inicio/Carrousel";
 import Categorias from "../components/Inicio/Categorias";
+import { CarrouselSkeleton } from "../utils/skeleton/Carrousel.skeleton"
+import UseCustomFetch from "../hooks/CustomFetch";
 
 const API = import.meta.env.VITE_API_LINK;
 
@@ -8,22 +10,13 @@ const Inicio = () => {
   const [imagenes, setImagenes] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const { getFetch } = UseCustomFetch();
+
   useEffect(() => {
     const fetchImagenes = async () => {
       try {
-        const response = await fetch(`${API}/banner/list`);
-
-        if (!response.ok) {
-          throw new Error(`Error HTTP: ${response.status}`);
-        }
-
-        const result = await response.json();
-
-        if (result.code && result.code !== 200) {
-          throw new Error(`Error de negocio: ${result.message}`);
-        }
-
-        setImagenes(result.obj || []);
+        const response = await getFetch(`${API}/banner/list`);
+        setImagenes(response.obj || []);
       } catch (error) {
         console.error("Error al obtener categorías:", error);
         setImagenes([]);
@@ -35,7 +28,7 @@ const Inicio = () => {
   }, []);
 
   return loading ? (
-    <></>
+    <CarrouselSkeleton />
   ) : (
     <>
       <Carrousel images={imagenes} />

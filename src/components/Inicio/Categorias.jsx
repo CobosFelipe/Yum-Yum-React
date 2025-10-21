@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Sliders from "./Slider";
-import GradientText from "../GradientText/GradientText";
+import GradientText from "./GradientText/GradientText";
 import { CategoriaSkeleton } from "../../utils/skeleton/Categoria.skeleton";
+import UseCustomFetch from "../../hooks/CustomFetch";
 
 const API = import.meta.env.VITE_API_LINK;
 
@@ -10,23 +11,13 @@ const Categorias = () => {
   const [categorias, setCategorias] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const { getFetch } = UseCustomFetch();
+
   useEffect(() => {
     const fetchCategorias = async () => {
       try {
-        const response = await fetch(`${API}/category/get`);
-
-        if (!response.ok) {
-          throw new Error(`Error HTTP: ${response.status}`);
-        }
-
-        const result = await response.json();
-
-        // Si el código de la respuesta JSON no es 200, maneja el error
-        if (result.code && result.code !== 200) {
-          throw new Error(`Error de negocio: ${result.message}`);
-        }
-
-        setCategorias(result.obj || []);
+        const response = await getFetch(`${API}/category/get`);
+        setCategorias(response.obj || []);
       } catch (error) {
         console.error("Error al obtener categorías:", error);
         setCategorias([]);
