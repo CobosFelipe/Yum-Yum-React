@@ -1,41 +1,49 @@
 import { useState, useEffect } from "react";
 import ProductCard from "../components/Productos/ProductCard";
-import GradientText from "../components/GradientText/GradientText";
+import GradientText from "../components/Inicio/GradientText/GradientText";
 import { ProductoSkeleton } from "../utils/skeleton/Producto.skeleton";
-import BotonSelect from "../utils/BotonSelect";
+import Pagination from "../components/Productos/Pagination";
+import UseCustomFetch from "../hooks/CustomFetch";
 
 const API = import.meta.env.VITE_API_LINK;
+const PAGE_SIZE = 12;
 
 const Productos = () => {
   const [productos, setProductos] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [page, setPage] = useState(1);
+  const [paginationData, setPaginationData] = useState({}); // Estado para toda la metadata
+
+  const { getFetch } = UseCustomFetch();
+
+  const handlePageChange = (newPage) => {
+    if (newPage > 0 && newPage <= paginationData.totalPages) {
+      setPage(newPage);
+    }
+  };
 
   useEffect(() => {
+    const offset = (page - 1) * PAGE_SIZE;
     const fetchProductos = async () => {
+      setLoading(true);
       try {
-        const response = await fetch(`${API}/product/all/24/0`);
+        const response = await getFetch(`${API}/product/all/${PAGE_SIZE}/${offset}`);
+        // Guardar lista de productos o []
+        setProductos(response.obj.products || []);
 
-        if (!response.ok) {
-          throw new Error(`Error HTTP: ${response.status}`);
-        }
-
-        const result = await response.json();
-
-        // Si el código de la respuesta JSON no es 200, maneja el error
-        if (result.code && result.code !== 200) {
-          throw new Error(`Error de negocio: ${result.message}`);
-        }
-
-        setProductos(result.obj || []);
+        // Guardar toda la metadata de paginación
+        setPaginationData(response.obj.pagination || {});
+        
       } catch (error) {
-        console.error("Error al obtener categorías:", error);
+        console.error("Error al obtener productos:", error);
         setProductos([]);
+        setPaginationData({ totalPages: 1, currentPage: 1, hasNextPage: false, hasPrevPage: false });
       } finally {
         setLoading(false);
       }
     };
     fetchProductos();
-  }, []);
+  }, [page]);
 
   // Generación de Array de Skeletons
   const SKELETON_COUNT = 12;
@@ -67,8 +75,15 @@ const Productos = () => {
             <ProductCard key={index} item={pro} />
           ))}
         </div>
+        <Pagination
+          currentPage={page}
+          totalPages={paginationData.totalPages}
+          onPageChange={handlePageChange}
+          //Pasar hasPrevPage y hasNextPage para más control
+          hasPrevPage={paginationData.hasPrevPage}
+          hasNextPage={paginationData.hasNextPage}
+        />
       </div>
-      <BotonSelect />
     </>
   );
 };

@@ -1,9 +1,10 @@
 import styles from "../../styles/product-card.module.css";
 import { useCart } from "../../hooks/useCart";
-import { Toastify } from "../Toastify/Toastify";
+import { useToastify } from "../Toastify/Toastify";
 
 const ProductCard = ({ item }) => {
   const { addToCart } = useCart();
+  const { showToast } = useToastify();
 
   return (
     <div className="flex flex-col items-center justify-center max-w-sm">
@@ -21,14 +22,17 @@ const ProductCard = ({ item }) => {
         {/* Espacio para el precio del producto y agregar al carrito */}
         <div className="flex items-center justify-around px-3 py-2">
           <span className="font-bold text-gray-800">$ {item.price.toLocaleString("es-CO")}</span>
-          <Toastify
+          <button
             text={"Producto agregado al carrito"}
-            btnText={"Agregar"}
             className={
               "px-2 py-1 text-xs font-semibold text-white uppercase transition-colors duration-300 transform bg-gray-800 rounded hover:bg-gray-700 focus:bg-gray-700 focus:outline-none"
             }
-            onClick={() => addToCart(item)}
-          />
+            onClick={() => {
+              addToCart(item), showToast("cart", "Producto agregado al carrito");
+            }}
+          >
+            Agregar
+          </button>
         </div>
       </div>
     </div>

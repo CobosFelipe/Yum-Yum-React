@@ -1,10 +1,11 @@
 import { useCart } from "../hooks/useCart";
 import ProductosCarrito from "../components/Carrito/ProductosCarrito"
-import GradientText from "../components/GradientText/GradientText";
+import GradientText from "../components/Inicio/GradientText/GradientText";
 import CarritoVacio from "../assets/imgs/Aqui pondría tus productos.jpg";
 import BotonCompra from "../utils/BotonCompra";
 const Carrito = () => {
   const { cart } = useCart();
+  
   //const [isOpen, setIsOpen] = useState(false);
 
   return (
