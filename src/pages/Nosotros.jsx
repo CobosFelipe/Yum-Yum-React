@@ -1,4 +1,4 @@
-import GradientText from "../components/GradientText/GradientText";
+import GradientText from "../components/Inicio/GradientText/GradientText";
 import TiltedCard from "../components/TiltedCard/TiltedCard";
 import profilePicture from "../assets/imgs/LorenaPicture.jpg";
 
