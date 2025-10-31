@@ -1,6 +1,7 @@
 import { useState, useMemo, useCallback, useEffect } from "react";
-import UsersContext from "./UsersContext"
+import UsersContext from "./UsersContext";
 import UseCustomFetch from "../hooks/CustomFetch";
+import { toast } from "react-toastify";
 
 const API = import.meta.env.VITE_API_LINK;
 
@@ -14,9 +15,22 @@ export function UserProvider({ children }) {
     setUser(user);
   }, []);
 
-  const logout = useCallback(() => {
-    setUser(null);
-  }, []);
+  const logout = useCallback(async () => {
+    try {
+      const response = await getFetch(`${API}/user/logout`, {
+        credentials: "include",
+      });
+      if (response && response.status === "success") {
+        setUser(null);
+        toast.success("Has cerrado la sesión.", { position: "top-center" });
+      } else {
+        toast.error(response.message || "Error al cerrar sesión.", { position: "top-center" });
+      }
+    } catch (error) {
+      setUser(null);
+      console.error("Fallo de red o del servidor al cerrar sesión:", error);
+    }
+  }, [getFetch]);
 
   // Para actualizar un usuario sin necesidad de hacer logout
   const updateUser = useCallback((newUserData) => {
@@ -37,19 +51,19 @@ export function UserProvider({ children }) {
         // Si la cookie es válida, el backend devuelve el objeto del JWT
         const userData = response.obj;
 
-        // 1. Guardar los datos en el estado
+        // Guardar los datos en el estado
         setUser(userData);
       } catch (error) {
         setUser(null);
         console.warn(`${error} o cookie expirada.`);
       } finally {
-        // 2. Terminar el estado de carga
+        // Terminar el estado de carga
         setIsLoading(false);
       }
     };
 
     verifySession();
-  }, []);
+  }, [getFetch]);
 
   const contextValue = useMemo(
     () => ({
