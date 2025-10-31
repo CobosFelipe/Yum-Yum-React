@@ -11,8 +11,10 @@
     "local": "vite --host"
   },
   "dependencies": {
+    "@emotion/styled": "^11.14.1",
     "@formspree/react": "^3.0.0",
     "@mui/material": "^6.4.7",
+    "@mui/styled-engine": "^7.3.3",
     "@tabler/icons-react": "^3.31.0",
     "@tailwindcss/vite": "^4.0.14",
     "clsx": "^2.1.1",
