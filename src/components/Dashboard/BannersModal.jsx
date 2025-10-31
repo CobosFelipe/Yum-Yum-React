@@ -13,13 +13,13 @@ const BannersModal = ({ onClose }) => {
   const [banners, setBanners] = useState([]);
   const [isBannersLoading, setIsBannersLoading] = useState(true);
 
-  // 🆕 Estado para manejar la edición en línea
+  // Estado para manejar la edición en línea
   const [editingId, setEditingId] = useState(null);
 
-  // 🆕 Estado para guardar el nuevo link mientras se edita
+  // Estado para guardar el nuevo link mientras se edita
   const [editingLink, setEditingLink] = useState("");
 
-  const { getFetch, postFetch } = UseCustomFetch();
+  const { getFetch, postFetch, putFetch } = UseCustomFetch();
 
   // Manejar los datos del formulario de Creación
   const handleChange = (e) => {
@@ -70,8 +70,6 @@ const BannersModal = ({ onClose }) => {
     if (!formData.link) return;
 
     try {
-      // El backend espera el link, pero la estructura del postFetch
-      // requiere un objeto o un body que pueda manejar. Ajustamos el payload.
       const payload = { link: formData.link };
 
       const response = await postFetch(`${API}/banner/add`, payload, {
@@ -113,13 +111,12 @@ const BannersModal = ({ onClose }) => {
       };
 
       const response = await putFetch(`${API}/banner/edit`, payload, {
-        // Asumiendo endpoint de edición PUT
         credentials: "include",
       });
 
       if (response && response.status === "success" && response.obj) {
         toast.success("Banner actualizado con éxito.", { position: "top-center" });
-        // 🔑 Actualiza la lista localmente
+        // Actualiza la lista localmente
         setBanners((prev) => prev.map((b) => (b.banner_id === banner_id ? response.obj : b)));
         cancelEdit();
         // onBannerUpdated(response.obj); // Llama al padre si es necesario
@@ -171,7 +168,7 @@ const BannersModal = ({ onClose }) => {
         </div>
 
         <div className="flex flex-col gap-6 mt-4 max-h-[70vh] overflow-y-auto pr-2">
-          {/* Sección 1: Crear Nuevo Banner */}
+          {/* Crear Nuevo Banner */}
           <section>
             <h2 className="text-lg font-semibold text-gray-800 mb-2">➕ Agregar Nuevo Banner</h2>
             <form onSubmit={handleCreateSubmit} className="flex gap-2 items-end">
@@ -204,7 +201,7 @@ const BannersModal = ({ onClose }) => {
 
           <hr className="border-gray-200" />
 
-          {/* Sección 2: Listar y Editar Banners */}
+          {/* Listar y Editar Banners */}
           <section>
             <h2 className="text-lg font-semibold text-gray-800 mb-2">📋 Banners Activos ({banners.length})</h2>
 
