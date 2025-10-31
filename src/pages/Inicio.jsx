@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Carrousel from "../components/Inicio/Carrousel";
 import Categorias from "../components/Inicio/Categorias";
-import { CarrouselSkeleton } from "../utils/skeleton/Carrousel.skeleton"
+import { CarrouselSkeleton } from "../utils/skeleton/Carrousel.skeleton";
 import UseCustomFetch from "../hooks/CustomFetch";
 
 const API = import.meta.env.VITE_API_LINK;
@@ -16,7 +16,8 @@ const Inicio = () => {
     const fetchImagenes = async () => {
       try {
         const response = await getFetch(`${API}/banner/list`);
-        setImagenes(response.obj || []);
+        const enlaces = Array.isArray(response.obj) ? response.obj.map((item) => item.link) : [];
+        setImagenes(enlaces);
       } catch (error) {
         console.error("Error al obtener categorías:", error);
         setImagenes([]);
@@ -25,7 +26,7 @@ const Inicio = () => {
       }
     };
     fetchImagenes();
-  }, []);
+  }, [getFetch]);
 
   return loading ? (
     <CarrouselSkeleton />

@@ -11,7 +11,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   const pageNumbers = getPageNumbers();
 
   return (
-    <div className="my-8"> {/* Añadido margen vertical para separarlo */}
+    <div className="my-6"> {/* Añadido margen vertical para separarlo */}
       <ul className="flex justify-center gap-1 text-gray-900">
         {/* Botón ANTERIOR */}
         <li>

@@ -1,4 +1,3 @@
-// Sliders.jsx
 import Slider from "react-infinite-logo-slider";
 
 const Sliders = ({ items }) => {

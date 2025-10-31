@@ -7,7 +7,6 @@ import Productos from "../pages/Productos";
 import Nosotros from "../pages/Nosotros";
 import Contacto from "../pages/Contacto";
 import Carrito from "../pages/Carrito";
-import Factura from "../pages/Factura";
 import Login from "../pages/Login";
 import Footer from "../components/Footer";
 import ProductosCategoria from "../pages/ProductosCategoria";
@@ -26,7 +25,6 @@ const AppRoutes = () => {
         <Route path="/Nosotros" element={<Nosotros />} />
         <Route path="/Contacto" element={<Contacto />} />
         <Route path="/Carrito" element={<Carrito />} />
-        <Route path="/Factura" element={<Factura />} />
         <Route path="/Login" element={<Login />} />
         {/* Rutas Protegidas */}
         <Route element={<AdminRoute />}>
