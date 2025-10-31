@@ -168,8 +168,6 @@ const CategoryModal = ({ onClose, onSave }) => {
     }
   };
 
-  // --- JSX (VISTA) ---
-
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm" onClick={onClose}>
       <div className="bg-white rounded-lg shadow-xl w-full max-w-2xl mx-4 p-6" onClick={(e) => e.stopPropagation()}>
@@ -182,7 +180,7 @@ const CategoryModal = ({ onClose, onSave }) => {
         </div>
 
         <div className="flex flex-col gap-6 mt-4 max-h-[70vh] overflow-y-auto pr-2">
-          {/* Sección 1: Crear Nueva Categoría */}
+          {/* Crear Nueva Categoría */}
           <section>
             <h2 className="text-lg font-semibold text-gray-800 mb-2">➕ Agregar Nueva Categoría</h2>
 
@@ -238,7 +236,7 @@ const CategoryModal = ({ onClose, onSave }) => {
 
           <hr className="border-gray-200" />
 
-          {/* Sección 2: Listar y Editar Categorías (Edición en línea) */}
+          {/* Listar y Editar Categorías (Edición en línea) */}
           <section>
             <h2 className="text-lg font-semibold text-gray-800 mb-2">📋 Categorías Activas ({categories.length})</h2>
 
@@ -249,7 +247,7 @@ const CategoryModal = ({ onClose, onSave }) => {
             ) : (
               <ul className="space-y-3">
                 {categories.map((category) => (
-                  <li key={category.category_id} className="p-3 border rounded-lg bg-gray-50 flex flex-col gap-2">
+                  <li key={category.category_id} className="px-3 py-1 border rounded-lg bg-gray-50 flex flex-col gap-1">
                     <div className="flex items-center gap-3">
                       <span className="text-xs text-gray-500 font-medium w-10 shrink-0">ID: {category.category_id}</span>
 
