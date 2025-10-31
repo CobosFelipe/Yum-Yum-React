@@ -2,7 +2,6 @@ import logo from "../assets/logo-yum-yum.png";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
-
   return (
     <>
       <footer className="bg-white">
@@ -14,24 +13,25 @@ const Footer = () => {
 
             <div className="flex flex-wrap justify-center mt-6 -mx-4">
               <Link to="/">
-                <div className="mx-4 text-md text-gray-500 font-normal cursor-pointer transition-colors duration-300 hover:text-pink-400">
-                  Inicio
-                </div>
+                <div className="mx-4 text-md text-gray-500 font-normal cursor-pointer transition-colors duration-300 hover:text-pink-400">Inicio</div>
               </Link>
 
-              <Link to="/Productos/Todo"
+              <Link
+                to="/Productos"
                 className="mx-4 text-md text-gray-500 font-normal cursor-pointer transition-colors duration-300 hover:text-pink-400"
               >
                 Productos
               </Link>
 
-              <Link to="/Nosotros"
+              <Link
+                to="/Nosotros"
                 className="mx-4 text-md text-gray-500 font-normal cursor-pointer transition-colors duration-300 hover:text-pink-400"
               >
                 Nosotros
               </Link>
 
-              <Link to="/Contacto"
+              <Link
+                to="/Contacto"
                 className="mx-4 text-md text-gray-500 font-normal cursor-pointer  transition-colors duration-300 hover:text-pink-400"
               >
                 Contacto
@@ -114,7 +114,7 @@ const Footer = () => {
                   ></path>
                 </svg>
               </a>
-                {/* Icono Instagram */}
+              {/* Icono Instagram */}
               <a
                 href="https://www.instagram.com/yum.bylorennivia/"
                 className="mx-2 text-gray-500 font-normal cursor-pointer  transition-colors hover:text-pink-400 hover:scale-115 duration-700 ease-in-out"
