@@ -55,7 +55,7 @@ const Navbar = () => {
                 // --- NAVEGACIÓN ADMINISTRADOR ---
                 <div className="flex flex-col lg:flex-row lg:items-center gap-2">
                   <NavLinkItem to="/Dashboard/Products">
-                    <span>Gestión Productos</span>
+                    <span>Panel de Control</span>
                   </NavLinkItem>
                   <NavLinkItem to="/Dashboard/Orders">
                     <span>Órdenes</span>
