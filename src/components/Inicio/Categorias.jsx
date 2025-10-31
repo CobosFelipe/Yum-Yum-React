@@ -27,7 +27,7 @@ const Categorias = () => {
     };
 
     fetchCategorias();
-  }, []);
+  }, [getFetch]);
 
   // Generación de Array de Skeletons
   const SKELETON_COUNT = 5;
@@ -38,12 +38,12 @@ const Categorias = () => {
   // Mapeo de la data (solo si no hay error y no está cargando)
   const slides = categorias.map((cat) => (
     <Link
-      to={`/Productos/${cat.name}`}
-      key={cat.name}
+      to={`/Productos/${cat.category_name}`}
+      key={cat.category_name}
       className="flex flex-col justify-center items-center w-[180px] border-2 border-indigo-300 rounded hover:scale-105 duration-700 ease-in-out cursor-pointer"
     >
-      <img src={cat.img} alt={`imagen de ${cat.name}`} />
-      <p className="text-black capitalize font-semibold lg:text-1xl my-1">{cat.name}</p>
+      <img src={cat.img} alt={`imagen de ${cat.category_name}`} />
+      <p className="text-black capitalize font-semibold lg:text-1xl my-1">{cat.category_name}</p>
     </Link>
   ));
 

@@ -34,7 +34,7 @@ function Carousel({ images }) {
             data-carousel-item
           >
             <img
-              src={image.link1}
+              src={image}
               className="block w-full object-contain"
               alt={`Slide ${index + 1}`}
             />
