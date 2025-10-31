@@ -1,12 +1,13 @@
+import { useState } from "react";
 import { useCart } from "../hooks/useCart";
-import ProductosCarrito from "../components/Carrito/ProductosCarrito"
+import OrderConfirmationModal from "../components/Carrito/OrderConfirmationModal";
+import ProductosCarrito from "../components/Carrito/ProductosCarrito";
 import GradientText from "../components/Inicio/GradientText/GradientText";
 import CarritoVacio from "../assets/imgs/Aqui pondría tus productos.jpg";
-import BotonCompra from "../utils/BotonCompra";
+
 const Carrito = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const { cart } = useCart();
-  
-  //const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="min-h-[70vh] flex flex-col justify-center gap-5">
@@ -22,17 +23,22 @@ const Carrito = () => {
               <ProductosCarrito key={index} item={prod} />
             ))}
           </div>
-          <BotonCompra to={"/Factura"}>
-            ¡Realizar Pedido!
-          </BotonCompra>
+          <div className="flex mx-auto">
+            <button onClick={() => setIsModalOpen(true)} className="px-3 py-2 min-w-1/2 text-xs font-semibold text-white uppercase transition-colors duration-300 transform bg-violet-600 rounded hover:bg-violet-700 focus:outline-none self-center">
+              Realizar Pedido
+            </button>
+          </div>
         </>
       ) : (
         <div className="container flex m-auto my-2 justify-center">
           <img src={CarritoVacio} />
         </div>
       )}
+
+      {/* Renderizar el Modal condicionalmente */}
+      {isModalOpen && <OrderConfirmationModal onClose={() => setIsModalOpen(false)} />}
     </div>
   );
 };
 
-export default Carrito
+export default Carrito;

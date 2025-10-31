@@ -46,7 +46,7 @@ const ProductosCategoria = () => {
       }
     };
     fetchProductos();
-  }, [page, categorias.categoria]);
+  }, [page, categorias.categoria, getFetch]);
 
   // Generación de Array de Skeletons
   const SKELETON_COUNT = 12;
